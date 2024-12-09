@@ -12,7 +12,7 @@ ${FREE_COURSE}     xpath://a[contains(text(),'Free Course')]
 
 *** Test Cases ***
 Open Website And Select Free Course
-    [Documentation]    کردن سایت باز و انتخاب تب فری کورس از اجوکیشن
+    [Documentation]    کردن باز سایت  و انتخاب تب فری course از education
     Open Browser      ${URL}   ${BROWSER}
     Maximize Browser Window
     Click Element     ${EDUCATION_TAB}
