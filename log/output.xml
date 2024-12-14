@@ -1,44 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.1.1 (Python 3.9.0 on win32)" generated="2024-12-09T14:20:00.765049" rpa="false" schemaversion="5">
-<suite id="s1" name="Courses" source="C:\Users\Snapp\PycharmProjects\Test\Courses.robot">
-<test id="s1-t1" name="Open Website And Select Free Course" line="14">
+<robot generator="Robot 7.1.1 (Python 3.9.0 on win32)" generated="2024-12-14T12:54:20.189575" rpa="false" schemaversion="5">
+<suite id="s1" name="Practice2v1" source="C:\Users\Snapp\PycharmProjects\Test\Practice2v1.robot">
+<test id="s1-t1" name="Verify Search Button Click" line="35">
+<kw name="Open Website">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-12-09T14:20:01.062396" level="INFO">Opening browser 'Chrome' to base url 'https://ultimateqa.com/automation#'.</msg>
+<msg time="2024-12-14T12:54:20.372508" level="INFO">Opening browser 'Chrome' to base url 'https://ultimateqa.com/automation'.</msg>
 <arg>${URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-12-09T14:20:01.060815" elapsed="34.269812"/>
+<status status="PASS" start="2024-12-14T12:54:20.372508" elapsed="29.888028"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2024-12-09T14:20:35.332306" elapsed="0.047757"/>
+<status status="PASS" start="2024-12-14T12:54:50.261532" elapsed="0.036261"/>
+</kw>
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2024-12-14T12:54:50.314735" level="INFO">Page title is 'Automation Practice - Ultimate QA'.</msg>
+<arg>Automation Practice - Ultimate QA</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2024-12-14T12:54:50.299791" elapsed="0.014944"/>
+</kw>
+<doc>باز کردن وب‌سایت</doc>
+<status status="PASS" start="2024-12-14T12:54:20.371361" elapsed="29.944365"/>
+</kw>
+<kw name="Click Search Button">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${SEARCH_BUTTON}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-12-14T12:54:50.316726" elapsed="0.035501"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2024-12-09T14:20:35.384456" level="INFO">Clicking element 'xpath://a[contains(text(),'Education')]'.</msg>
-<arg>${EDUCATION_TAB}</arg>
+<msg time="2024-12-14T12:54:50.353282" level="INFO">Clicking element 'xpath://button[contains(@class, 'et_pb_menu__icon et_pb_menu__search-button')]'.</msg>
+<arg>${SEARCH_BUTTON}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-09T14:20:35.381687" elapsed="0.134870"/>
+<status status="PASS" start="2024-12-14T12:54:50.353282" elapsed="0.131143"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${FREE_COURSE}</arg>
+<arg>${SEARCH_BOX}</arg>
 <arg>timeout=5s</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2024-12-09T14:20:35.518563" elapsed="0.142267"/>
+<status status="PASS" start="2024-12-14T12:54:50.484425" elapsed="0.040788"/>
 </kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2024-12-09T14:20:35.662427" level="INFO">Clicking element 'xpath://a[contains(text(),'Free Course')]'.</msg>
-<arg>${FREE_COURSE}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-12-09T14:20:35.661906" elapsed="0.075807"/>
+<doc>کلیک روی دکمه Search و بررسی عملکرد</doc>
+<status status="PASS" start="2024-12-14T12:54:50.316726" elapsed="0.209505"/>
 </kw>
-<kw name="Close Browser" owner="SeleniumLibrary">
+<kw name=" Verify Search Box Default Text">
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2024-12-14T12:54:50.561811" level="INFO">${placeholder_text} = Search …</msg>
+<var>${placeholder_text}</var>
+<arg>${SEARCH_BOX}</arg>
+<arg>placeholder</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2024-12-14T12:54:50.530297" elapsed="0.031514"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${placeholder_text}</arg>
+<arg>${EXPECTED_TEXT}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-12-14T12:54:50.562810" elapsed="0.001008"/>
+</kw>
+<doc>بررسی متن پیش‌فرض در داخل باکس جستجو</doc>
+<status status="PASS" start="2024-12-14T12:54:50.528343" elapsed="0.035475"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2024-12-09T14:20:35.738301" elapsed="23.130125"/>
+<status status="PASS" start="2024-12-14T12:54:50.563818" elapsed="23.148466"/>
 </kw>
-<doc>کردن سایت باز و انتخاب تب فری کورس از اجوکیشن</doc>
-<status status="PASS" start="2024-12-09T14:20:01.057814" elapsed="57.811614"/>
+<doc>بررسی عملکرد دکمه Search در سایت Ultimate QA</doc>
+<status status="PASS" start="2024-12-14T12:54:20.370340" elapsed="53.342809"/>
 </test>
-<status status="PASS" start="2024-12-09T14:20:00.766049" elapsed="58.104287"/>
+<status status="PASS" start="2024-12-14T12:54:20.191575" elapsed="53.523574"/>
 </suite>
 <statistics>
 <total>
@@ -47,7 +79,7 @@
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Courses">Courses</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Practice2v1">Practice2v1</stat>
 </suite>
 </statistics>
 <errors>
