@@ -1,0 +1,65 @@
+*** Settings ***
+Library           SeleniumLibrary
+Test Teardown     Close Browser
+
+*** Variables ***
+${URL}             https://ultimateqa.com/automation
+${BROWSER}         Chrome
+#${SEARCH_BUTTON}   xpath://button[contains(@class, 'search-submit')]
+${SEARCH_BUTTON}   xpath://button[contains(@class, 'et_pb_menu__icon et_pb_menu__search-button')]
+#${SEARCH_BOX}      xpath://input[contains(@class, 'et_pb_menu__search-input')]
+#${SEARCH_BOX}      xpath://input[@name='s']
+${SEARCH_BOX}      name:s
+${EXPECTED_TEXT}   Search …
+${SEARCH_TERM}            automation
+
+# Updated:  یک لیست کامل با همه تایتل ها
+@{EXPECTED_RESULT_TITLE}        A Test Data Strategy for Parallel Automation in Playwright  Case Study: Automation Program Development for a Large Healthcare Organization by UltimateQA  Insurance company reduces feedback cycle by 82% using automation  Achieving 8-Hour Daily Time Savings and 4-Minute Feedback Loops: UltimateQA’s Automation Impact on an International Health Organization  Embracing Test Automation Diversity: Why One Size Doesn’t Fit All
+
+
+#element attribute should be
+
+
+*** Keywords ***
+Open Website
+    [Documentation]  Open Website
+    Open Browser      ${URL}    ${BROWSER}
+    Maximize Browser Window
+    Title Should Be     Automation Practice - Ultimate QA
+
+
+
+Click Search Button
+    [Documentation]   Click on Search button and check search function
+    Wait Until Element Is Visible    ${SEARCH_BUTTON}    timeout=10s
+    Click Element                    ${SEARCH_BUTTON}
+    Wait Until Element Is Visible    ${SEARCH_BOX}       timeout=5s
+
+ Verify Search Box Default Text
+    [Documentation]   Check search button defult text
+    Element Attribute Value Should Be    ${SEARCH_BOX}    placeholder    ${EXPECTED_TEXT}
+    #${placeholder_text}=    Get Element Attribute    ${SEARCH_BOX}    placeholder
+    #Should Be Equal         ${placeholder_text}      ${EXPECTED_TEXT}
+
+Enter search term and click the search button
+    Input Text         ${SEARCH_BOX}    ${SEARCH_TERM}
+    Click Button       ${SEARCH_BUTTON}
+
+Verify the search results
+    [Documentation]   Verify that all expected search results are present
+    Wait Until Page Contains    ${EXPECTED_RESULT_TITLE}[0]    timeout=10
+    Page Should Contain         ${EXPECTED_RESULT_TITLE}[1]
+    Page Should Contain         ${EXPECTED_RESULT_TITLE}[2]
+    Page Should Contain         ${EXPECTED_RESULT_TITLE}[3]
+    Page Should Contain         ${EXPECTED_RESULT_TITLE}[4]
+    Page Should Contain         ${EXPECTED_RESULT_TITLE}[5]
+
+*** Test Cases ***
+Verify Search Button Click
+    [Documentation]   Check search functionality
+    Open Website
+    Click Search Button
+    Verify Search Box Default Text
+    Enter search term and click the search button
+    Verify the search results
+
